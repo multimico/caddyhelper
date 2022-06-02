@@ -9,7 +9,7 @@ This container does nothing important, yet.
 Start a caddy service with an internal network. This internal network needs to be attachable. 
 
 ```
-docker run -it --network YOURCADDYADMINNET ghcr.io/multimico/
+docker run -it --network YOURCADDYADMINNET ghcr.io/multimico/caddyhelper:latest
 ```
 
 ## Included Packages
