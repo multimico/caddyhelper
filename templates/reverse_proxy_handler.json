@@ -6,10 +6,15 @@
         "routes": [  
             {
                 "handle": [
-                    // {
-                    //     "handler": "uri",
-                    //     "strip_prefix": "/api/backendservice"
-                    // },
+                    {
+                        "handler": "subroute",
+                        "routes": [
+                            {
+                                "handler": "rewrite",
+                                "strip_path_prefix": "/api/backendservice"
+                            }
+                        ]
+                    },
                     {
                         "handler": "reverse_proxy",
                         "upstreams": [
