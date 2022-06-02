@@ -1,12 +1,18 @@
 # caddyhelper 
 
-A small container with tools helpful for using the [Caddy admin API](https://caddyserver.com)
+A small container with tools helpful for using the [Caddy admin API](https://caddyserver.com) in a Docker Swarm environment. 
 
-This container does nothing important, yet. 
+This container does nothing important, yet.
 
-It simply provides a bunch of helpful tools for working with Caddy's admin API. 
+## Usage
 
-## Included Packages
+Start a caddy service with an internal network. This internal network needs to be attachable. 
+
+```
+docker run -it --network YOURCADDYADMINNET ghcr.io/multimico/
+```
+
+## Included Packages
 
 - curl
 - vim-tiny
