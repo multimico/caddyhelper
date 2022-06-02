@@ -26,10 +26,15 @@ RUN apt update && \
     apt install -y caddy \
     && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    curl -s -L -o /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 && \
+    chmod a+x /usr/local/bin/yq
 
 WORKDIR /caddy
+
 COPY templates /caddy/templates
+
+RUN chmod -R 775 /caddy && chown -R caddy /caddy
 
 USER caddy
 

@@ -16,7 +16,8 @@ docker run -it --network YOURCADDYADMINNET ghcr.io/multimico/caddyhelper:latest
 
 - curl
 - vim-tiny
-- jq
+- jq (for JSON)
+- yq (for YAML)
 - ping
 - git
 - openssh-client (to be used with git)
@@ -44,6 +45,6 @@ TO DO
 
 While being relatively simple the Caddy admin API is not intuitive. This is because the request paths don't follow JQ query paths and the config.json format is rather complex. 
 
-- [ ] include YAML Support using `yq`. 
-- [ ] Provide built-in templates for typical tasks that can be changed using `jq`.
+- [ ] Provide built-in templates for typical tasks that can be changed using `jq` or `yq`.
+- [ ] Include  `envsubst`
 - [ ] A tool that checks whether a given configuration is already (partially) included and generate an appropriate request path for the configuration. 
