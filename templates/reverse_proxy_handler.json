@@ -1,0 +1,33 @@
+// adds a reverse proxy route to  an existing server as presented by update_dady.json
+// curl -X POST caddy:2019/config/apps/http/servers/srv0/routes/0/handle/... -d  @reverse_proxy_handler.json  -H 'Content-Type: text/json'
+[
+    {
+        "handler": "subroute", 
+        "routes": [  
+            {
+                "handle": [
+                    // {
+                    //     "handler": "uri",
+                    //     "strip_prefix": "/api/backendservice"
+                    // },
+                    {
+                        "handler": "reverse_proxy",
+                        "upstreams": [
+                            {
+                              "dial": "backendservice:80"
+                            }
+                          ]
+                    }
+                ],
+                "match": [
+                    {
+                        "path": [
+                            "/api/backendservice/*",
+                            "/api/backendservice"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

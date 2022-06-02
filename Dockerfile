@@ -29,6 +29,7 @@ RUN apt update && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /caddy
+COPY templates /caddy/templates
 
 USER caddy
 

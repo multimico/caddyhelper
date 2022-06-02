@@ -1,0 +1,25 @@
+// adds a route to  an existing server as presented by update_dady.json
+// curl -X POST caddy:2019/config/apps/http/servers/srv0/routes/0/handle/... -d  @update_caddy2.json  -H 'Content-Type: text/json'
+[
+    {
+        "handler": "subroute", 
+        "routes": [  
+            {
+                "handle": [
+                    {
+                        "body": "foo baz",
+                        "handler": "static_response"
+                    }
+                ],
+                "match": [
+                    {
+                        "path": [
+                            "/baz/*",
+                            "/baz"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

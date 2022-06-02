@@ -1,0 +1,9 @@
+// This adds a new route for a virtual host to the server
+//  curl -X POST caddy:2019/config/apps/http/servers/srv0 -d   @update_caddy.json  -H 'Content-Type: text/json'
+{                                                                                  
+    "listen": [                                                                    
+      "virtualhost.example.com:80", 
+      "virtualhost.example.com:443"                                                                        
+    ],                                                                             
+    "routes": []
+  }  
