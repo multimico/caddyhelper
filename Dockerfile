@@ -1,6 +1,6 @@
 FROM caddy:2.5.1
 
-RUN apk add --update \
+RUN apk add --no-cache --update \
     vim \
     git \
     openssh-client \
