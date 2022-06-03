@@ -8,9 +8,25 @@ This container does nothing important, yet.
 
 Start a caddy service with an internal network. This internal network needs to be attachable. 
 
+For admin mode 
+
 ```
-docker run -it --network YOURCADDYADMINNET ghcr.io/multimico/caddyhelper:latest
+docker run --rm -it --network CADDYADMINNET --name caddyhelper ghcr.io/multimico/caddyhelper:latest /bin/ash
 ```
+
+For site development 
+
+```
+docker run --rm -d --network CADDYPROXYNET --name devcaddy ghcr.io/multimico/caddyhelper:latest 
+docker exec -it devcaddy /bin/ash
+```
+
+For local site development
+
+```
+docker run --rm -it -p 8080:80 -v ${Code_Repo}:/srv ghcr.io/multimico/caddyhelper:latest 
+```
+
 
 ## Included Packages
 
@@ -23,7 +39,8 @@ docker run -it --network YOURCADDYADMINNET ghcr.io/multimico/caddyhelper:latest
 - openssh-client (to be used with git)
 - less
 - python3 with pycurl
-- caddy (for additional caddy tools)
+- nodejs
+- npm
 
 ## Intention
 
@@ -46,5 +63,4 @@ TO DO
 While being relatively simple the Caddy admin API is not intuitive. This is because the request paths don't follow JQ query paths and the config.json format is rather complex. 
 
 - [ ] Provide built-in templates for typical tasks that can be changed using `jq` or `yq`.
-- [ ] Include  `envsubst`
 - [ ] A tool that checks whether a given configuration is already (partially) included and generate an appropriate request path for the configuration. 
